@@ -1,0 +1,3 @@
+server.get('*.*', express.static(distFolder, {
+  maxAge: '1y'
+}));

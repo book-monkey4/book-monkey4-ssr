@@ -1,0 +1,21 @@
+import { ngExpressEngine } from '@nguniversal/express-engine';
+import { AppServerModule } from './src/main.server';
+
+const server = express();
+const distFolder = join(process.cwd(), 'dist/book-monkey/browser');
+const indexHtml = 'index';
+
+server.engine('html', <TEX>\bfs</TEX>ngExpressEngine({
+  bootstrap: AppServerModule,
+})<TEX>\bfe</TEX>);
+
+server.set('view engine', 'html');
+server.set('views', distFolder);
+
+server.get('*.*', express.static(distFolder, {
+  maxAge: '1y'
+}));
+
+server.get('*', (req, res) => {
+  res.render(indexHtml, { req });
+});
