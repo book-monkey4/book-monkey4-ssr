@@ -1,0 +1,10 @@
+server.get('*.*', express.static(distFolder, /* ... */));
+
+<TEX>\bfs</TEX>// Disable SSR for specific routes
+server.get(['/admin', '/admin/**'], (req, res) => {
+  res.sendFile(join(distFolder, 'index.html'));
+});<TEX>\bfe</TEX>
+
+server.get('*', (req, res) => {
+  res.render(indexHtml, /* ... */);
+});
