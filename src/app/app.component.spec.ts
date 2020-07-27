@@ -17,7 +17,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule
       ]
-    });
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -37,15 +37,15 @@ describe('BookStoreService', () => {
   it('should GET a list of all books', () => {
 
     let receivedBooks: Book[];
-    service.getAll().subscribe(books => receivedBooks = books); 
+    service.getAll().subscribe(books => receivedBooks = books);
 
     // Request aus der Warteschlange holen
     const req = httpMock.expectOne(
       'https://api4.angular-buch.com/secure/books');
-    expect(req.request.method).toEqual('GET'); 
+    expect(req.request.method).toEqual('GET');
 
     // flush -- jetzt werden die Bücher emittiert
-    req.flush(bookRaw); 
+    req.flush(bookRaw);
 
     expect(receivedBooks.length).toBe(2);
     expect(receivedBooks[0].isbn).toBe('111');
@@ -56,6 +56,6 @@ describe('BookStoreService', () => {
 
   afterEach(() => {
     // prüfen, ob kein Request übrig geblieben ist
-    httpMock.verify(); 
+    httpMock.verify();
   });
 });
